@@ -1,6 +1,5 @@
 package BaekJoon;
 //1000
-
 import java.util.Scanner;
 
 public class Baek_1000 {
@@ -15,6 +14,8 @@ public class Baek_1000 {
 		int sum = num1 + num2;
 		
 		System.out.println(sum);
+
+		scanner.close();
 	}
 
 }
