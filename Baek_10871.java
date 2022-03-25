@@ -7,28 +7,25 @@ import java.io.OutputStreamWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Baek_10871 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st1;
         int N, X = 0;
 
-        for (int i = 0 ; i < 2 ; i++){
         StringTokenizer st2 = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st2.nextToken());
-        X = Integer.parseInt(st2.nextToken());
-        bw.write(N+ X);
-        }
+        N = Integer.parseInt(st2.nextToken());  //몇 개
+        X = Integer.parseInt(st2.nextToken());  //몇 보다 작은 수
 
+        st1 = new StringTokenizer(br.readLine());
 
-        /*for (int i = 0; i < N ; i++){
-             st = new StringTokenizer(br.readLine());
-             if (Integer.parseInt(st.nextToken()) < X){
-                 bw.write(Integer.parseInt(st.nextToken()));
+        for (int i = 0; i < N ; i++){
+             int num = Integer.parseInt(st1.nextToken());
+             if (num < X){
+                 bw.write(num + " ");
              }
-
-        }*/
+        }
         bw.close();
     }
 }
