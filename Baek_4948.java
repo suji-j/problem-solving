@@ -1,7 +1,7 @@
 package BaekJoon;
 
 import java.io.*;
-//4948
+//4948 -베르트랑 공준
 public class Baek_4948{
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
