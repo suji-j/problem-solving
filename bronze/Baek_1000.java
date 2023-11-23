@@ -1,4 +1,4 @@
-package BaekJoon;
+package bronze;
 //1000
 import java.util.Scanner;
 
