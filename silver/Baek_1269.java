@@ -15,8 +15,6 @@ public class Baek_1269 {
         int aSize = Integer.parseInt(st.nextToken());
         int bSize = Integer.parseInt(st.nextToken());
 
-        int cnt = 0;
-
         Set<Integer> A = new HashSet<>();
         Set<Integer> B = new HashSet<>();
 
