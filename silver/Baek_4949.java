@@ -22,24 +22,18 @@ public class Baek_4949 {
                 }
 
                 if (stack.isEmpty()) {
-                     if (str.charAt(i) == ')' || str.charAt(i) == ']') {
+                    if (str.charAt(i) == ')' || str.charAt(i) == ']') {
                         stack.add(Character.toString(str.charAt(i)));
                         break;
                     }
                 } else {
-                    if (str.charAt(i) == ')' && stack.peek().equals("(")) {
+                    if ((str.charAt(i) == ')' && stack.peek().equals("(")) || (str.charAt(i) == ']' && stack.peek().equals("["))) {
                         stack.pop();
-                    } else if (str.charAt(i) == ']' && stack.peek().equals("[")) {
-                        stack.pop();
-                    } else if (str.charAt(i) == ')' && stack.peek().equals("[")) {
-                        break;
-                    } else if (str.charAt(i) == ']' && stack.peek().equals("(")) {
+                    } else if ((str.charAt(i) == ')' && stack.peek().equals("[")) || (str.charAt(i) == ']' && stack.peek().equals("("))) {
                         break;
                     }
                 }
-
             }
-
             if (stack.isEmpty()) {
                 sb.append("yes\n");
             } else {
