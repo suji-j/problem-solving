@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.lang.StringBuilder;
 
 class Solution {
     public String solution(String s) {
-        String answer = "";
+        StringBuilder sb = new StringBuilder();
         String[] arr = s.split(" ");
         int[] intArr = new int[arr.length];
         
@@ -15,7 +16,7 @@ class Solution {
         String min = Integer.toString(intArr[0]);
         String max = Integer.toString(intArr[intArr.length - 1]);
         
-        answer = min + " " + max;
-        return answer;
+        sb.append(min).append(" ").append(max);
+        return sb.toString();
     }
 }
