@@ -7,8 +7,11 @@ class Solution {
         StringBuilder sb = new StringBuilder();
         
         for (int i = s.length() - 1; i >= 0; i--) {
-            if (s.charAt(i) == ' ') backCnt += 1;
-            else break;
+            if (s.charAt(i) == ' ') {
+                backCnt += 1;
+            } else {
+                break;  
+            } 
         }
         
         for (int i = 0; i < arr.length; i++) {
@@ -17,9 +20,12 @@ class Solution {
             if (str.isBlank()) {
                 sb.append(" ");
             } else {
-                sb.append(str.substring(0, 1).toUpperCase()).append(str.substring(1, str.length()).toLowerCase());
-                if (i != arr.length - 1) sb.append(" ");
-                else { 
+                sb.append(str.substring(0, 1).toUpperCase());
+                sb.append(str.substring(1, str.length()).toLowerCase());
+                
+                if (i != arr.length - 1) { 
+                    sb.append(" ");
+                } else { 
                     for (int j = 0; j < backCnt; j++) {
                         sb.append(" ");
                     }
