@@ -25,14 +25,22 @@ public class Main {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (!rgVisited[i][j]) {
-                    redGreen(i, j, rgVisited);
-                    redGreen += 1;
+                if (!nrgVisited[i][j]) {
+                    dfs(i, j, nrgVisited);
+                    notRedGreen += 1;
                 }
 
-                if (!nrgVisited[i][j]) {
-                    notRedGreen(i, j, nrgVisited);
-                    notRedGreen += 1;
+                if (map[i][j] == 'G') {
+                    map[i][j] = 'R';
+                }
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (!rgVisited[i][j]) {
+                    dfs(i, j, rgVisited);
+                    redGreen += 1;
                 }
             }
         }
@@ -40,35 +48,17 @@ public class Main {
         System.out.println(notRedGreen + " " + redGreen);
     }
 
-    public static void redGreen(int y, int x, boolean[][] rgVisited) {
-        rgVisited[y][x] = true;
+    public static void dfs(int y, int x, boolean[][] visited) {
+        visited[y][x] = true;
 
         for (int i = 0; i < 4; i++) {
             char ch = map[y][x];
             int moveY = y + dy[i];
             int moveX = x + dx[i];
 
-            if (isVaild(moveY, moveX) && !rgVisited[moveY][moveX]) {
-                if ((ch == 'R' || ch == 'G') && (map[moveY][moveX] == 'R' || map[moveY][moveX] == 'G')) {
-                    redGreen(moveY, moveX, rgVisited);
-                } else if (ch == 'B' && map[moveY][moveX] == 'B') {
-                    redGreen(moveY, moveX, rgVisited);
-                }
-            }
-        }
-    }
-
-    public static void notRedGreen(int y, int x, boolean[][] nrgVisited) {
-        nrgVisited[y][x] = true;
-
-        for (int i = 0; i < 4; i++) {
-            char ch = map[y][x];
-            int moveY = y + dy[i];
-            int moveX = x + dx[i];
-
-            if (isVaild(moveY, moveX) && !nrgVisited[moveY][moveX]) {
+            if (isVaild(moveY, moveX) && !visited[moveY][moveX]) {
                 if (ch == map[moveY][moveX]) {
-                    notRedGreen(moveY, moveX, nrgVisited);
+                    dfs(moveY, moveX, visited);
                 }
             }
         }
