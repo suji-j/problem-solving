@@ -12,8 +12,7 @@ public class Main {
         for (int i = 0; i < cnt; i++) {
             String str = br.readLine();
             if (map.containsKey(str)) {
-                int value = map.get(str) + 1;
-                map.put(str, value);
+                map.put(str, map.get(str) + 1);
             } else {
                 map.put(str, 1);
             }
