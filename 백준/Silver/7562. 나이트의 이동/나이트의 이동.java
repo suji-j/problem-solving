@@ -47,7 +47,7 @@ public class Main {
 
         while (!queue.isEmpty()) {
             int[] arr = queue.poll();
-            ;
+            
             int nodeY = arr[0];
             int nodeX = arr[1];
 
