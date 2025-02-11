@@ -7,13 +7,12 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int INF = 10000001;
         int n = Integer.parseInt(br.readLine());
         int m = Integer.parseInt(br.readLine());
         int[][] dist = new int[n + 1][n + 1];
 
         for (int i = 1; i <= n; i++) {
-            Arrays.fill(dist[i], INF);
+            Arrays.fill(dist[i], Integer.MAX_VALUE);
             dist[i][i] = 0;
         }
 
@@ -30,7 +29,7 @@ public class Main {
         for (int k = 1; k <= n; k++) {
             for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= n; j++) {
-                    if (dist[i][k] != INF && dist[k][j] != INF) {
+                    if (dist[i][k] != Integer.MAX_VALUE && dist[k][j] != Integer.MAX_VALUE) {
                         dist[i][j] = Math.min(dist[i][j], dist[i][k] + dist[k][j]);
                     }
                 }
@@ -39,7 +38,7 @@ public class Main {
 
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
-                System.out.print((dist[i][j] == INF ? 0 : dist[i][j]) + " ");
+                System.out.print((dist[i][j] == Integer.MAX_VALUE ? 0 : dist[i][j]) + " ");
             }
             System.out.println();
         }
