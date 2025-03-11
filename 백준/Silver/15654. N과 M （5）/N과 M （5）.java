@@ -42,7 +42,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             if (!result.contains(num[i])) {
                 result.add(num[i]);
-                back(start + 1, depth + 1);
+                back(i + 1, depth + 1);
                 result.remove(result.size() - 1);
             }
         }
