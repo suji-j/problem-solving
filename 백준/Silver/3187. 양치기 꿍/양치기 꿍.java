@@ -33,12 +33,6 @@ public class Main {
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
                 if (!visited[i][j] && map[i][j] != '#') {
-                    if (map[i][j] == 'v') {
-                        curWolf++;
-                    } else if (map[i][j] == 'k') {
-                        curSheep++;
-                    }
-
                     dfs(i, j);
 
                     if (curSheep > curWolf) {
@@ -60,18 +54,14 @@ public class Main {
 
     static void dfs(int y, int x) {
         visited[y][x] = true;
+        if (map[y][x] == 'v') curWolf++;
+        else if (map[y][x] == 'k') curSheep++;
 
         for (int i = 0; i < 4; i++) {
             int nextY = y + dy[i];
             int nextX = x + dx[i];
 
             if (isValid(nextY, nextX) && !visited[nextY][nextX] && map[nextY][nextX] != '#') {
-                if (map[nextY][nextX] == 'v') {
-                    curWolf++;
-                } else if (map[nextY][nextX] == 'k') {
-                    curSheep++;
-                }
-
                 dfs(nextY, nextX);
             }
         }
