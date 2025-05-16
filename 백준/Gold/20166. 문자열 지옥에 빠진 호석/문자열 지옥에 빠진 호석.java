@@ -1,14 +1,15 @@
 import java.io.*;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 public class Main {
-    static int n, m, maxDepth;
+    static int n, m, cnt;
     static char[][] arr;
     static int[] dy = {0, 0, -1, 1, 1, 1, -1, -1};
     static int[] dx = {-1, 1, 0, 0, 1, -1, 1, -1};
-    static HashMap<String, Integer> map = new LinkedHashMap<>();
+    static Map<String, Integer> map = new HashMap<>();
+    static String answer;
     static StringBuilder sb;
 
     public static void main(String[] args) throws IOException {
@@ -28,41 +29,40 @@ public class Main {
         }
 
         for (int i = 0; i < k; i++) {
-            String str = br.readLine();
-            map.put(str, 0);
-            maxDepth = Math.max(maxDepth, str.length());
-        }
+            answer = br.readLine();
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                sb = new StringBuilder();
-                sb.append(arr[i][j]);
-                dfs(i, j);
+            if (map.containsKey(answer)) {
+                bw.write(map.get(answer) + "\n");
+                continue;
             }
-        }
 
-        for (String str : map.keySet()) {
-            bw.write(map.get(str) + "\n");
+            for (int y = 0; y < n; y++) {
+                for (int x = 0; x < m; x++) {
+                    sb = new StringBuilder();
+                    sb.append(arr[y][x]);
+                    
+                    if (answer.startsWith(sb.toString())) {
+                        dfs(y, x, answer.length());
+                        map.put(answer, cnt);
+                    }
+                }
+            }
+            bw.write(cnt + "\n");
+            cnt = 0;
         }
         bw.close();
     }
 
-    static void dfs(int y, int x) {
+    static void dfs(int y, int x, int maxDepth) {
         String cur = sb.toString();
-        if (map.containsKey(cur)) {
-            map.put(cur, map.get(cur) + 1);
-            return;
+
+        if (cur.length() > maxDepth) return;
+
+        if (answer.equals(cur)) {
+            cnt++;
         }
 
-        if (cur.length() >= maxDepth) return;
-
-        boolean flag = true;
-        for (String str : map.keySet()) {
-            if (str.startsWith(cur)) {
-                flag = false;
-                break;
-            }
-        }
+        boolean flag = !answer.startsWith(cur);
         if (flag) return;
 
         for (int i = 0; i < 8; i++) {
@@ -70,7 +70,7 @@ public class Main {
             int moveX = (x + dx[i] + m) % m;
 
             sb.append(arr[moveY][moveX]);
-            dfs(moveY, moveX);
+            dfs(moveY, moveX, maxDepth);
             sb.deleteCharAt(sb.length() - 1);
         }
     }
