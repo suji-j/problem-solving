@@ -71,7 +71,7 @@ public class Main {
 
             for (Node next : list.get(cur.vertex)) {
                 int minCost = cur.cost + next.cost;
-                if (minCost <= dist[next.vertex]) {
+                if (minCost < dist[next.vertex]) {
                     dist[next.vertex] = minCost;
                     pq.add(new Node(next.vertex, minCost));
                 }
