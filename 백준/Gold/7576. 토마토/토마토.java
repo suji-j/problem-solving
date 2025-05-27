@@ -17,7 +17,7 @@ public class Main {
     static int[][] arr;
     static int[] dy = {-1, 1, 0, 0};
     static int[] dx = {0, 0, -1, 1};
-    static Queue<Node> tomato;
+    static Queue<Node> tomato = new LinkedList<>();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -31,10 +31,11 @@ public class Main {
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < m; j++) {
                 arr[i][j] = Integer.parseInt(st.nextToken());
+                if (arr[i][j] == 1) {
+                    tomato.add(new Node(i, j));
+                }
             }
         }
-
-        findRipe();
         bfs();
 
         bw.write(String.valueOf(findUnripe() == 0 ? ans - 1 : -1));
@@ -51,17 +52,6 @@ public class Main {
             }
         }
         return cnt;
-    }
-
-    static void findRipe() {
-        tomato = new LinkedList<>();
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (arr[i][j] == 1) {
-                    tomato.add(new Node(i, j));
-                }
-            }
-        }
     }
 
     static void bfs() {
