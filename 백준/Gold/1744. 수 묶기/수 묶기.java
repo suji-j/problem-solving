@@ -18,7 +18,7 @@ public class Main {
         List<Integer> list = new ArrayList<>();
         for (int i = n - 1; i >= 0; i--) {
             if (arr[i] > 0) {
-                if (i > 0 && arr[i - 1] > 0 && !(arr[i] == 1 || arr[i - 1] == 1)) {
+                if (i > 0 && arr[i - 1] > 0 && arr[i] != 1 && arr[i - 1] != 1) {
                     list.add(arr[i] * arr[i - 1]);
                     i--;
                 } else {
