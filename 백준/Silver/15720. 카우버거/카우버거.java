@@ -1,8 +1,5 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -16,50 +13,50 @@ public class Main {
         int min = Math.min(Math.min(b, c), d);
         int set = 0;
 
-        List<Integer> burger = new ArrayList<>();
+        Integer[] burger = new Integer[b];
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < b; i++) {
-            burger.add(Integer.parseInt(st.nextToken()));
-            set += burger.get(i);
+            burger[i] = Integer.parseInt(st.nextToken());
+            set += burger[i];
         }
 
-        List<Integer> side = new ArrayList<>();
+        Integer[] side = new Integer[c];
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < c; i++) {
-            side.add(Integer.parseInt(st.nextToken()));
-            set += side.get(i);
+            side[i] = Integer.parseInt(st.nextToken());
+            set += side[i];
         }
 
-        List<Integer> drink = new ArrayList<>();
+        Integer[] drink = new Integer[d];
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < d; i++) {
-            drink.add(Integer.parseInt(st.nextToken()));
-            set += drink.get(i);
+            drink[i] = Integer.parseInt(st.nextToken());
+            set += drink[i];
         }
 
-        Collections.sort(burger, Collections.reverseOrder());
-        Collections.sort(side, Collections.reverseOrder());
-        Collections.sort(drink, Collections.reverseOrder());
+        Arrays.sort(burger, Collections.reverseOrder());
+        Arrays.sort(side, Collections.reverseOrder());
+        Arrays.sort(drink, Collections.reverseOrder());
 
         int ans = 0;
         for (int i = 0; i < min; i++) {
-            int sum = burger.get(i) + side.get(i) + drink.get(i);
+            int sum = burger[i] + side[i] + drink[i];
             ans += sum * 0.9;
         }
 
         if (min < b) {
             for (int i = min; i < b; i++) {
-                ans += burger.get(i);
+                ans += burger[i];
             }
         }
         if (min < c) {
             for (int i = min; i < c; i++) {
-                ans += side.get(i);
+                ans += side[i];
             }
         }
         if (min < d) {
             for (int i = min; i < d; i++) {
-                ans += drink.get(i);
+                ans += drink[i];
             }
         }
 
