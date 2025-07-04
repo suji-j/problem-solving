@@ -15,8 +15,6 @@ public class Main {
 
             while (st.hasMoreTokens()) {
                 String cur = st.nextToken();
-                
-                if (cur.isEmpty()) continue;
                 int wordCnt = cur.length();
 
                 if (cur.equals("<br>")) {
