@@ -31,11 +31,12 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
+        
         n = Integer.parseInt(st.nextToken());
         int k = Integer.parseInt(st.nextToken());
+        
         arr = new int[n][n];
         visited = new boolean[n][n];
-        ;
 
         for (int y = 0; y < n; y++) {
             st = new StringTokenizer(br.readLine());
